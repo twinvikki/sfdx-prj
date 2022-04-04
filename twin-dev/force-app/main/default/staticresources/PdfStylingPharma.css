@@ -1,0 +1,60 @@
+/*
+	Created by: Greg Hacic
+	Last Update: 5 August 2015 by Greg Hacic
+	Questions?: greg@interactiveties.com
+	
+	Notes:
+		- this file is stored as a static resource in Salesforce and referenced in Visualforce pages with the <apex:stylesheet> tag
+*/
+body {
+	font-family: Arial, Helvetica, sans-serif;
+        .table-bordered {
+                border: 1px solid #000;
+                border-collapse : collapse;
+                font-size : .7em;
+        }
+}
+@page {
+	size: landscape; /*landscape orientation*/
+	/*page numbers in the bottom center of each page in the pdf document*/
+	@bottom-center {
+		content: "Page " counter(page) " of " counter(pages);
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+	/*placeholders for other content areas*/
+	@bottom-right {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+	@bottom-left {
+                content:element(footer);
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+	@top-right {
+                content: element(header);
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+	@top-center {
+                
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+	@top-left {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 80%;
+	}
+        div.header {
+                                      padding: 10px;
+                                      position: running(header);
+                           }
+        div.footer {
+                                display: block;
+                             padding: 5px;
+                               position: running(footer);
+                      }
+
+
+}

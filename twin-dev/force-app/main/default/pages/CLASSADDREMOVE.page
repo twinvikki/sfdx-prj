@@ -1,0 +1,29 @@
+<apex:page showHeader="false" >
+    <apex:includeScript value="{!$Resource.JQueryEx}"/>
+<!-->    <style> demotest{color:red;}</style> <!-->    
+    <script> 
+    /*    function addcssClass(){
+          $("p").addclass("demotest");
+          }   */
+    function changeColor(){
+        $(".para").css("color",$("#mycolor").val());
+        }
+    </script>
+    <p class="para">
+         paragraph
+    </p> 
+    <select id="mycolor" onChange="changeColor();">
+         <option>None</option>
+         <option>Red</option>
+         <option>blue</option>
+         <option>Green</option>
+    </select>
+
+<!-->    <p class="demo">para 1</p>
+        <p class="demo">para 2</p>
+        <p class="demotest">para 3</p>
+        <p class="demo">para 4</p>
+    <button onclick="addcssClass();">
+        apply css
+    </button><!-->
+</apex:page>

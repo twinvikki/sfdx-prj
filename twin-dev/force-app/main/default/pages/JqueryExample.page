@@ -1,0 +1,43 @@
+<apex:page showHeader="false" standardStylesheets="false" >
+   
+  <apex:includeScript value="{!$Resource.JQueryEx}"/>
+    <script>
+    /*  $.noConflict();
+    jQuery(document).ready(function(){
+    alert("on load");
+    });
+     Hello */
+    
+    /*  $(document).ready(function(){
+        $("#pid").click(function(){
+         alert("Para is clicked");
+        });
+        $(".pid").click(function(){
+            alert("this is not to be clicked");
+            });  
+        }); */
+    
+    $(document).ready(function(){
+        $("#hidepara").click(function(){
+            $(".mypara").hide()
+                                       });                
+    });
+    
+    
+    /*Java Script*/
+    funtion showPara(){ 
+    $(".mypara").show();
+    } 
+     </script>
+    <p class = "mypara"> This is a para</p>
+     <button id="showPara();">Show</button> 
+    <button id="hidepara">hide</button> 
+    
+    <!--> <p id="pid">
+         This is paragaraph
+    </p>
+    <p class="pid">
+         This is not paragaraph
+    </p> */ <!-->
+    
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page showheader="false" >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page: hello
+  <!-- End Default Content REMOVE THIS -->
+  <apex:form >
+  Name:<apex:inputText />
+  <br/>
+  Age:<apex:inputText />
+  <br/>
+  <apex:outputlabel value="Gender:"/>
+  <apex:selectRadio >
+  <apex:selectOption >Male</apex:selectOption>
+  <apex:selectOption >Female</apex:selectOption> </apex:selectRadio>
+  </apex:form>
+</apex:page>

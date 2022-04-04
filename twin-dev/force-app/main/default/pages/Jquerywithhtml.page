@@ -1,0 +1,31 @@
+<apex:page showHeader="false" >
+    <apex:includeScript value="{!$Resource.JQueryEx}"/>
+    <script>
+    var count=0;
+    /*  $(document).ready(function(){
+       $("#showCount").(function(){
+           count++;
+           $("#para").html("<br>Button is clicked"+count+"times</br>");
+             });
+        
+      $("#para").html($("#para").html());
+        
+       }); */
+        function showCount(){
+         count++;
+         $("#para").html("<br>Button is clicked"+count+"times</br>");
+        }
+    function showhtml(){
+        $("#para").html(("#para").html);
+        } 
+    </script>
+    <p id="para"></p>
+    <button onClick="showCount();">
+       Set count
+    </button> 
+    <button onClick="showhtml();">
+       Show Html
+    </button>  
+
+
+</apex:page>

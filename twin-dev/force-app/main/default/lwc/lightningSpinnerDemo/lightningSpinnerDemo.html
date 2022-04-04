@@ -1,0 +1,45 @@
+<!--
+MIT License
+
+Copyright (c) 2020 Playground, https://www.playg.app
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<template>
+    <div class="slds-m-top_medium slds-m-bottom_x-large button-group">
+        <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+            Custom Spinner With Text Demo
+        </h2>
+
+        <!-- options-->
+        <lightning-combobox name="size" label="Choose size" value={size}
+            options={sizeOptions} onchange={handleSizeChange}></lightning-combobox>
+        <lightning-combobox name="variant" label="Choose Variant" value={variant}
+            options={variantOptions} onchange={handleVariantChange}></lightning-combobox>
+        <lightning-combobox name="position" label="Choose position" value={textPosition}
+            options={positionOptions} onchange={handlePositionChange}></lightning-combobox>
+        <lightning-input type="text" label="Enter loading text" value={spinnerText} onchange={handleTextChange}>
+        </lightning-input>
+    </div>
+
+    <div class="spinner-container">
+        <c-lightning-spinner spinner-text={spinnerText} variant={variant} size={size} text-position={textPosition}>
+        </c-lightning-spinner>
+    </div>
+</template>

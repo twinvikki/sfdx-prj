@@ -1,0 +1,19 @@
+<apex:Page showHeader="false" controller="pagemsgClass" >
+    <apex:form >
+        <apex:PageMessages ></apex:PageMessages>
+    <apex:PageBlock title="Student Details">
+        <apex:PageBlockSection >
+            <apex:OutputLabel value="Name"></apex:OutputLabel>
+        <apex:inputText value="{!name}"/>
+       
+        </apex:PageBlockSection>
+        </apex:PageBlock>
+    <apex:commandButton value="save" onclick="callme()" action="{!save}" />
+    </apex:form>
+    <script>
+    function callme()
+    {
+    alert("hello");
+    }    
+    </script>
+</apex:Page>

@@ -1,0 +1,27 @@
+<apex:page controller="WrapperTest" showHeader="false">
+    <apex:form >
+        <apex:pageblock >     
+        <apex:pageBlockButtons >
+            <apex:commandbutton action="{!processselected}" value="show account" reRender="block"/>
+            
+        </apex:pageBlockButtons>
+        
+        <apex:pageblocktable value="{!wrapaccountList}" var="w">
+            <apex:column ><apex:inputCheckbox value="{!w.checkbox}" /></apex:column>
+            <apex:column value="{!w.accn.Name}"/>
+            <apex:column value="{!w.accn.Email_id__c}"/>
+            <apex:column value="{!w.accn.Industry}"/>
+            <apex:column value="{!w.accn.fax}"/> 
+        </apex:pageblocktable> 
+        </apex:pageblock>
+        <apex:pageblock >
+        <apex:pageblocktable value="{!selectedaccount}" var="q" id="block">
+            <apex:column value="{!q.Name}"/>
+            <apex:column value="{!q.Email_id__c}"/>
+            <apex:column value="{!q.Industry}"/>
+            <apex:column value="{!q.fax}"/>
+        </apex:pageblocktable>
+        
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

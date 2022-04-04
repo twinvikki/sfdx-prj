@@ -1,0 +1,18 @@
+<apex:page showHeader="false" >
+    <apex:includeScript value="{!$Resource.JQueryEx}"/>
+    <script> 
+    function validate(){
+        if($("#inputvalue").val() == " ") {
+          $("#err").html("Enter value");
+        }
+        else
+            {alert($("#inputvalue").val());}
+        }
+    </script>
+    <input type="text" id="inputvalue"/>
+    <p id="err"></p>
+    <button onClick="validate();">
+        validate
+    </button>
+    
+</apex:page>

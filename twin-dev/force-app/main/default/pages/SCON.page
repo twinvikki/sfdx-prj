@@ -1,0 +1,25 @@
+<apex:page sidebar="false" wizard="false" standardController="Account">
+    <apex:sectionHeader title="SCON Account" subtitle="SCON-SHIP"/>
+    <apex:form >
+    <apex:pageBlock title="SCON EDIT">
+      <apex:pageBlockButtons >
+          <apex:commandButton value="Save" action="{!Save}"/>
+          <apex:commandButton value="Cancel" action="{!Cancel}"/>
+        </apex:pageBlockButtons>
+        
+      <apex:pageBlockSection title="Details">
+         <apex:inputField value="{!Account.Name}" required="false"/>
+      </apex:pageBlockSection>  
+        
+      <apex:pageBlockSection title="Details">
+         <apex:inputField value="{!Account.industry}"/>
+      </apex:pageBlockSection>          
+       
+      <apex:pageBlockSection title="Contacts">
+         <apex:inputField value="{!Account.Phone}"/>
+      </apex:pageBlockSection>  
+
+        
+    </apex:pageBlock>    
+    </apex:form>
+</apex:page>

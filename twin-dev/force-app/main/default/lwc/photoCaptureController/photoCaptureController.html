@@ -1,0 +1,32 @@
+<template>
+    <lightning-card variant="Narrow"  title=" MDN - WebRTC: Still photo capture demo">
+        <lightning-layout>
+            <lightning-layout-item  padding="around-small">
+                <lightning-card variant="Narrow"  title="">
+                    <br/>
+                    <div class="camera">
+                        <video id="video" class="classVideo">Video stream not available.</video>
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>  
+            <br/>
+            <lightning-layout-item  padding="around-small">
+                &nbsp; &nbsp;
+            </lightning-layout-item> 
+            <lightning-layout-item  padding="around-small">
+                <lightning-card variant="Narrow"  title="Captures Image">
+                    <canvas  id="canvas">
+                    </canvas> 
+                    <div class="output">
+                            <img id="photo" class="classPhoto" src={preData} alt=""/>
+                    </div> <br/>
+                    <button style="background-color:rgba(0, 0, 255, 0.507)" onclick={savePhoto}>Save photo to record</button> 
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div slot="footer">
+            <button style="background-color:aquamarine" onclick={clickCapture}>Take photo</button>  &nbsp;
+            <button style="background-color:rgba(255, 0, 0, 0.664)" onclick={clickClear}>Clear Photo</button> 
+        </div>
+    </lightning-card>
+</template>

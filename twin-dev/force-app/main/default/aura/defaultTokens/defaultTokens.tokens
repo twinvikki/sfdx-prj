@@ -1,0 +1,12 @@
+<aura:tokens>
+<!--aura:token name="divFont" value="italic bold 12px/30px Georgia, serif"/>
+
+<aura:token name="divFontWeight" value="bold"/>
+
+<aura:token name="divBackgroundColor" value="Green"/>
+
+<aura:token name="divMargin" value="6px"/>
+
+<aura:token name="divTextColor" value="red"/-->
+    <aura:token name="brandLogoImage" value="15px"/>
+</aura:tokens>

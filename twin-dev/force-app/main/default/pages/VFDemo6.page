@@ -1,0 +1,50 @@
+<apex:page controller="VFDemo6Controller">
+  <apex:form >
+ <!--   showpanel
+    <apex:outputpanel rendered="{!showpanel}">
+      Panel 1
+    </apex:outputpanel>
+    <apex:outputpanel rendered="{!!showpanel}">
+      Panel 2
+    </apex:outputpanel>  -->
+    
+    <apex:pageblock title="Contact Custom Page">
+        <apex:pageblockButtons location="top">            
+            <apex:commandButton value="Save" action="{!Save}"/>
+            <apex:commandButton value="Cancel" action="{!cancel}"/>      
+        </apex:pageblockButtons>
+        <apex:pageBlockSection title="Contact Details" columns="2" collapsible="false">
+            <apex:pageBlockSectionItem >
+               Section 1
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+               Section 2
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageblocktable value="{!Acc}" var="item">
+        <!--It creates the related list table similart to ui it takes value and value will be equal to the list in apex -->
+        <!-- we have to use inside the pageblock table apex:column value="feild api"-->
+            <apex:column value="{!item.id}"/>
+            <apex:column value="{!item.Name}"/>
+            <apex:column value="{!item.AccountNumber}"/>
+            <apex:column value="{!item.Ownerid}"/>            
+        </apex:pageblocktable>
+    </apex:pageblock>
+    <table border="">
+      <tr><th>Id</th>
+          <th>Name</th>
+          <th>AccountNumber</th>
+          <th>OwnerId</th>
+      </tr> <!--we need to add manually records for over ui so we use repeat-->
+      <apex:repeat value="{!acc}" var="item">
+        <tr>
+          <td>{!item.id}</td>
+          <td>{!item.Name}</td>   
+          <td>{!item.AccountNumber}</td>
+          <td><apex:outputField value="{!item.ownerid}"/></td>  <!-- if we use this we will get as name and link -->
+    <!--      <td>{!item.Ownerid}</td>  if we use this we wil get owner id -->
+        </tr>
+      </apex:repeat>
+    </table>
+  </apex:form>
+</apex:page>

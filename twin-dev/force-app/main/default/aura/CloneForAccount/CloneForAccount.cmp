@@ -1,0 +1,13 @@
+<aura:component controller="OpportunityCloneApex" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>     
+    <aura:attribute name="objDetail" type="opportunity" default="{'sobjectType' : 'opportunity'}"/> 
+    <aura:attribute name="StagePickNameAPI" type="string" default="StageName" description="values for picklist"/>
+    <aura:attribute name="StagePickName" type="list" default="[]"/>
+    <lightning:input label="OpportunityName" required="true" name="OpportunityName" value="{!v.objDetail.name}"/>
+    <lightning:input label="OppDate" reuqired="true" type="Date" name="OppDate" value="{!v.objDetail.CloseDate}"/>
+    <lightning:select name="StagePickName" value="{!v.objDetail.StageName}" label="Stage Pick Name">
+        <aura:iteration items="{!v.StagePickName}" var="val">
+            <option value="{!val.label}">{!val.value}</option>
+        </aura:iteration>
+    </lightning:select>
+</aura:component>

@@ -1,0 +1,5 @@
+<aura:component >
+    <aura:handler event="c:NavigateIdTOChild" action="{!c.handleApplicationEvent}"/>
+    <aura:attribute name="parentId" type="Id" default=""/>
+    {!v.parentId}
+</aura:component>

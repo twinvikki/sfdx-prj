@@ -1,0 +1,22 @@
+<apex:page controller="PharmaProductCustomExtension">
+  <apex:form >   
+    <apex:outputtext rendered="{!!recordsfound}"> 
+        <apex:messages ></apex:messages> </apex:outputtext>
+    <apex:pageBlock title="Pharma Details">
+    <apex:pageBlockTable value="{!Pharmalist}" var="PharmaItem">
+        <apex:column >
+            <apex:facet name="Header">
+               <apex:outputPanel >
+              	<apex:outputText value="Select"></apex:outputText>
+               </apex:outputPanel>
+            </apex:facet>
+            <apex:commandLink value="Select" action="{!CopyPageRecordId}" styleClass="btn">
+              <apex:param name="check" value="{!PharmaItem.id}" assignTo="{!paramValue}"/>
+            </apex:commandLink>
+        </apex:column>
+        <apex:column value="{!PharmaItem.name}"/>
+        <apex:column value="{!PharmaItem.Price__c}"/>       
+    </apex:pageBlockTable> 
+    </apex:pageBlock>        
+  </apex:form>
+</apex:page>

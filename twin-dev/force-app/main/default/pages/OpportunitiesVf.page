@@ -1,0 +1,19 @@
+<apex:page controller="OpprotunitiesVF">
+    <apex:form >
+        <apex:pageBlock >
+        <apex:pageBlockButtons >
+            <apex:commandbutton action="{!processselected}" value="show Opportunity" reRender="block"/>            
+        </apex:pageBlockButtons>
+        <apex:pageblocktable value="{!opportunitylist}" var="w">
+            <apex:column ><apex:inputCheckbox value="{!w.checkbox}" /></apex:column>
+            <apex:column value="{!w.oppr.StageName}"/>
+        </apex:pageblocktable> 
+        </apex:pageBlock>
+        <apex:pageblock >
+        <apex:pageblocktable value="{!Selopportunity}" var="q" id="block">
+            <apex:column value="{!q.Name}"/>
+            <apex:column value="{!q.StageName}"/>
+        </apex:pageblocktable>
+        </apex:pageblock> 
+    </apex:form>
+</apex:page>

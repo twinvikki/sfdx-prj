@@ -1,0 +1,7 @@
+<apex:page controller="Controller2" sidebar="true" showHeader="true" >
+    <apex:form >
+Vendor Name:
+        <apex:Outputtext value="{!inputText2}"  />  
+        <br />
+    </apex:form>
+</apex:page>

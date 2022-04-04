@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="navigate" type="Boolean" default="false"/>
+    <aura:attribute name="UrlID" type="String" default=""/>
+</aura:event>

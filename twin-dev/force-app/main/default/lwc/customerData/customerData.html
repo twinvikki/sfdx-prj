@@ -1,0 +1,77 @@
+<template>
+    <lightning-card>
+        <template if:false={showresetScreen}>
+            <div slot="title" class="slds-align_absolute-center">
+                <h6> Customer Search Screen</h6>
+            </div>
+            <lightning-card>
+            <div class="inputPadding">
+            <lightning-input type="email" class="inp" label="Email" name="inpEmail" onkeypress={enableButtons}></lightning-input> </div>
+            <div class="inputPadding">
+            <lightning-input type="tel" class="inp" label="Mobile" name="inpPhone" onkeypress={enableButtons}></lightning-input></div>
+            <div class="inputPadding">
+            <lightning-input type="text" class="inp" label="ID Number" name="inpID" onkeypress={enableButtons}></lightning-input></div> <br/>
+            <div id="buttonStyle">
+                <lightning-button variant="brand" label="Fetch" title="Fetch Data" onclick={handleSubmit} class="slds-m-left_x-small"></lightning-button> &nbsp;
+                <lightning-button variant="destructive" label="Reset" title="Reset Input"   onclick={handleReset} class="slds-m-left_x-small"></lightning-button>
+            </div></lightning-card>
+        </template>
+       
+        <template if:true={contactInfo}>
+            <div slot="title" class="slds-align_absolute-center">
+                <h6>Customer Details</h6>
+            </div>
+            <!--lightning-record-view-form
+                record-id={contactInfo.id}
+                object-api-name="public_Contact__x">
+                <div class="slds-box">
+                    <lightning-output-field field-name="contactInfo.Last_Name__c"></lightning-output-field>
+                    <lightning-output-field field-name="contactInfo.AccountId__r.CRN__c"></lightning-output-field>
+                </div>
+            </!--lightning-record-view-form-->
+            
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <span>Name:</span>
+                    {contactInfo.Salutation__c} &nbsp; {contactInfo.FirstName__c} &nbsp; {contactInfo.Name}
+                  </div>
+            </div>            
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <span>Id Type:&nbsp;</span>
+                    {contactInfo.Customer_Account__r.ID_Type__c}
+                  </div>                
+            </div><br/>
+            <button class="slds-button slds-button_icon slds-button_icon-border" title="Refresh" onclick={refreshScreen}>
+                <svg class="slds-button__icon" aria-hidden="true">
+                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.28.0#back"></use>
+                </svg>
+            </button>
+            <button class="slds-button slds-button_icon slds-button_icon-border" title="Approval" onclick={fetchQuestions}>
+                <svg class="slds-button__icon" aria-hidden="true">
+                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.28.0#check"></use>
+                </svg>
+            </button>
+        </template>
+        <template if:true={questionsInfo}>
+            <div slot="title" class="slds-align_absolute-center">
+                <h6>Customer Details</h6>
+            </div>           
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <span>Mother's Maiden Name:&nbsp;</span>
+                    {questionsInfo.What_is_your_Mothers_Maiden_Name__c}
+                  </div>
+            </div><br/>
+            <button class="slds-button slds-button_icon slds-button_icon-border" title="Refresh" onclick={refreshScreen}>
+                <svg class="slds-button__icon" aria-hidden="true">
+                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.28.0#back"></use>
+                </svg>
+            </button>
+            <lightning-button ariant="base" label="Launch Customer Screen" title="Launch Customer Screen" onclick={launcCustomerScreen} class="slds-m-left_x-small"></lightning-button>
+        </template>
+        <div slot="footer" class="slds-p-top_x-large buttonStyl ">
+            &#169; This property is owned by Karu Industries Customer Information Provided above is confendential.
+        </div>
+    </lightning-card>
+</template>

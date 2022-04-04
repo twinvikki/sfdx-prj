@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="navigate" type="boolean" />
+    <!--This event is just redirecting not passing any information-->
+</aura:event>

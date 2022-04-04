@@ -1,0 +1,9 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="DisplayText" Type="string" default="Text1"/>
+    
+    <div> <!-- instead of this text we need to call or display value of attribute to do that we use expression {!v.attributename} -->
+        <p>This is my 1st lightning page
+        {!v.DisplayText}</p>
+    </div>
+	
+</aura:component>

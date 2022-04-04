@@ -1,0 +1,25 @@
+<apex:page controller="paramtest" docType="html-5.0">
+<apex:form >
+ 
+<apex:commandbutton action="{!testdirect}" reRender="test" value="Static value">
+<apex:param assignTo="{!value}" value="The static value that was set from vf page"/>
+</apex:commandbutton><br/>
+<input type="text" id="testinput"/>
+<input type="button" onclick="testinputJS()" value="Dynamic Value" class="btn"/>
+<apex:outputPanel id="test">
+<apex:outputText value="{!value}"/>
+</apex:outputPanel>
+<apex:actionFunction action="{!testinput}" name="passToController" rerender="test">
+<apex:param value="" name="inpval"/>
+</apex:actionFunction>
+</apex:form>
+<script>
+function testinputJS(){
+var str = document.getElementById('testinput').value;
+if(str.length >4){
+str= str.substring(0,4);
+}
+passToController(str);
+}
+</script>
+</apex:page>

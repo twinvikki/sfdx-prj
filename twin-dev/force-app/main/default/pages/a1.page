@@ -1,0 +1,19 @@
+<apex:page controller="A1">
+<APEX:FORM >
+<apex:pageblock title="List of contact"> 
+<apex:pageBlockSection >
+  
+<apex:pageblocktable value="{!a}" var="e" >
+<apex:column value="{!e.Name}"/>
+<apex:column value="{!e.MobilePhone}"/>
+<apex:column value="{!e.Fax}"/>
+</apex:pageblocktable>
+<apex:pageblocktable value="{!b}" var="D" >
+<apex:column value="{!D.Name}"/>
+<apex:column value="{!D.MobilePhone}"/>
+<apex:column value="{!D.Fax}"/>
+</apex:pageblocktable>
+</apex:pageBlockSection>
+</apex:pageblock>
+</APEX:FORM>
+</apex:page>

@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="SELECTS BASED ON RECORD TYPE">
+    <aura:attribute name="RecId" type="Id"/>
+    <!--aura:attribute name="BikeNavigate" type="Boolean" default="false"/>
+    <aura:attribute name="CarNavigate" type="Boolean" default="false"/--> 
+</aura:event>

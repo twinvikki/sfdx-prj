@@ -1,0 +1,273 @@
+<apex:page controller="VFDemo9">
+    <apex:form >
+        <apex:pageMessages id="msg"/>
+        <apex:actionFunction name="showData" action="{!showAccountData}" reRender="accData,conData,msg,wrapperData"/>
+        <apex:actionFunction name="fetchContact" action="{!fetchContactRecord}" reRender="conDetails">
+        	<apex:param name="param1" value="" assignTo="{!selectedContactId}"/>
+        </apex:actionFunction>
+        <apex:actionFunction name="showWarning" action="{!showWarning}" reRender="msg"/>
+        <apex:selectList value="{!selectedAccountId}" size="1" onchange="showData();">
+            <apex:selectOptions value="{!accpList}" />
+        </apex:selectList>
+        <br/><br/><hr/>   
+        
+        <apex:outputPanel id="accData">
+            <apex:outputPanel rendered="{!selectedAccount.Id != null}">
+                <table border="1">
+                    <tr>
+                        <td>Account Id</td>
+                        <td><apex:outputField value="{!selectedAccount.Id}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Account Name</td>
+                        <td><apex:outputField value="{!selectedAccount.Name}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Owner</td>
+                        <td><apex:outputField value="{!selectedAccount.OwnerId}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Active</td>
+                        <td><apex:outputField value="{!selectedAccount.Active__c}"/></td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        <br/><br/>
+        <apex:outputPanel id="conData">
+        	<apex:outputPanel rendered="{!relatedContacts.size > 0}">
+                <table border="1">
+                    <tr>
+                        <th>Action</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>DOB</th>
+            		</tr>
+                    <apex:repeat value="{!relatedContacts}" var="conItem">
+                        <tr>
+                            <td><a href="javascript:void(0);" onclick="fetchContact('{!conItem.Id}');">Edit</a></td>
+                            <td>{!conItem.FirstName}</td>
+                            <td>{!conItem.LastName}</td>
+                            <td>{!conItem.Email}</td>
+                            <td>{!conItem.BirthDate}</td>
+                        </tr>
+            		</apex:repeat>
+                </table>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        <br/><br/><hr/>
+        <apex:outputPanel id="conDetails">
+        	<apex:outputPanel rendered="{!selectedContact.Id != null}">
+            	<table border="1">
+                    <tr>
+                        <td>First Name</td>
+                        <td><apex:inputField value="{!selectedContact.FirstName}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td><apex:inputField value="{!selectedContact.LastName}" onchange="showWarning();"/></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><apex:inputField value="{!selectedContact.Email}"/></td>
+                    </tr>
+                    <tr>
+                        <td>BirthDate</td>
+                        <td><apex:inputField value="{!selectedContact.BirthDate}"/></td>
+                    </tr>
+                    <tr>
+                        <td><apex:commandButton value="save" action="{!save}" reRender="conDetails,conData,msg"/></td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        
+        <apex:outputPanel id="wrapperData">
+        	<apex:outputPanel rendered="{!wrapperClassList.size > 0}">
+            	<table border="1">
+                    <tr>
+                        <th>Action</th>
+                        <th>Contact First Name</th>
+                        <th>Contact Last Name</th>
+                        <th>User Email</th>
+                        <th>User City</th>
+            		</tr>
+                    <apex:repeat value="{!wrapperClassList}" var="wrapperItem">
+                        <tr>
+                            <td><apex:inputCheckBox value="{!wrapperItem.isSelected}"/></td>
+                            <td>
+                                <apex:inputField value="{!wrapperItem.conRecord.FirstName}" rendered="{!wrapperItem.isSelected}"/>
+                                <apex:outputField value="{!wrapperItem.conRecord.FirstName}" rendered="{!!wrapperItem.isSelected}"/>
+                            </td>
+                            <td>
+                                <apex:inputField value="{!wrapperItem.conRecord.LastName}" rendered="{!wrapperItem.isSelected}"/>
+                              	<apex:outputField value="{!wrapperItem.conRecord.LastName}" rendered="{!!wrapperItem.isSelected}"/>
+                            </td>
+                            <td>
+                                <apex:inputField value="{!wrapperItem.userRecord.Email}" rendered="{!wrapperItem.isSelected}"/>
+                            	<apex:outputField value="{!wrapperItem.userRecord.Email}" rendered="{!!wrapperItem.isSelected}"/>
+                            </td>
+                            <td>
+                                <apex:inputField value="{!wrapperItem.userRecord.City}" rendered="{!wrapperItem.isSelected}"/>
+                            	<apex:outputField value="{!wrapperItem.userRecord.City}" rendered="{!!wrapperItem.isSelected}"/>
+                            </td>
+                            
+                        </tr>
+            		</apex:repeat>
+                    <tr>
+                    	<td>
+                            <apex:commandButton action="{!edit}" value="edit" reRender="wrapperData" rendered="{!!showEdit}"/>
+                        	<apex:commandButton action="{!saveWrapper}" value="save" rendered="{!showEdit}" reRender="accData,conData,msg,wrapperData"/>
+                        </td>
+                        
+                    </tr>
+                </table>
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:form>
+    
+</apex:page>
+<!--<apex:page controller="VFDemo9Controller">
+ <apex:form >  
+    <apex:pageblock >
+ <!--   <apex:pageMessage summary="These display account information" severity="info" strength="1"/>  
+    <apex:pageMessages id="msg"/>
+     
+    <apex:actionFunction name="showdata" action="{!showAccountData}" reRender="accdata,condata,msg,wrapperData"/> 
+<!--Whatever we gave in on change we need to use here and case sensetive
+     
+    <apex:actionfunction name="fetchContact" action="{!fetchContactRecord}" reRender="conDetails">
+         <apex:param name="param1" value="" assignTo="{!selectedContactid}"/>
+<!-- for passing the parameter we need to use ape:param. Name is compulsory we can give any name.
+           value is what we need to give when we dont pass any parameter. assignTo for which parameter we are assigning.
+           if we use multiple parameter then we need to use multipile param
+     </apex:actionfunction>
+     <apex:actionFunction name="ShowWarning" action="{!ShowWarning}" reRender="msg"/>
+<!--     <apex:actionFunction name="ChangeConOnwer" action="{!ChangeConOnwer}" reRender="wrapperData">
+         <apex:param name="param1" value="" assignTo="{!selectedContactid}"/>
+    </apex:actionFunction> 
+    <apex:selectList value="{!SelectedAccountId}" size="1" onchange="showdata();"> 
+        <apex:selectOptions value="{!accpList}"/>     
+    </apex:selectList> 
+    <br/><br/> <hr/>  
+     
+     <apex:pageBlockSection title="Account Block">
+     <apex:outputPanel id="accdata">
+<!--we give this id in reRender to refresh page-
+       <apex:outputPanel rendered="{!selectedaccount.id !=null}"> 
+         <table border="1" align="left" width="75%">
+            <tr>
+             <td> Account id</td>
+             <td> Account Name</td>
+             <td> SLA Expiration</td>
+             <td> Email</td>
+            </tr>
+            <tr>
+             <td><apex:outputField value="{!selectedAccount.id}"/></td>           
+             <td><apex:outputField value="{!selectedAccount.Name}"/></td>            
+             <td><apex:outputField value="{!selectedAccount.SLAExpirationDate__c}"/></td>           
+             <td><apex:outputField value="{!selectedAccount.Email_id__c}"/></td>       
+            </tr>
+         </table>
+       </apex:outputPanel>
+      </apex:outputPanel> 
+     </apex:pageBlockSection>
+          <br/><br/><br/> 
+     <apex:pageBlockSection >
+     <apex:outputPanel id="condata">
+         <apex:outputPanel rendered="{!contactlist.size>0}" >
+             <table border="1">
+               <tr>
+                <td> </td> 
+                <td> Contact id</td>
+                <td> Contatc Last Name</td>
+                <td> Contatc First Name</td>
+                
+              </tr> 
+              <apex:repeat value="{!contactlist}" var="con">
+                <tr>
+  <!--every contact will have edit button if we use javascript:void
+    for all href we will use onClick method and we will pass each parameter in single quotes.
+    for multiple parameters we use onClick="Name('{!con.id}','{!con.name}');" etc..
+     
+  <!-- We need to match the javascript with action in controller
+       When we are using javascript no need to use parameter method
+                    <td><a href="javascript:void(0);" onClick="fetchContact('{!con.id}');">Edit</a></td>
+                    <td>{!con.Id}</td>                     
+                    <td>{!con.FirstName}</td>                     
+                    <td>{!con.LastName}</td>
+                </tr>
+              </apex:repeat>
+             </table>
+         </apex:outputPanel>
+     </apex:outputPanel>
+     </apex:pageBlockSection>
+     <br/><br/><br/>
+     <apex:outputPanel id="conDetails">
+         <apex:outputpanel rendered="{!selectedcontact.id != null}">
+  <!--our requirement is to create the editable mode for contacts when we press enter so we use input field 
+             <apex:pageMessage summary="Contact Edit Page" severity="Warning" strength="3"></apex:pageMessage>
+             <table border="1">
+                 <tr>
+                   <td>First Name</td>
+                   <td><apex:inputField value="{!selectedcontact.firstname}" onChange="ShowWarning()"/></td>
+                 </tr>
+                 <tr>
+                   <td>Last Name</td>
+                   <td><apex:inputField value="{!selectedcontact.lastname}"/></td>
+                 </tr>
+                 <tr>
+                   <td>Email</td>
+                   <td><apex:inputField value="{!selectedcontact.email}"/></td>
+                 </tr>
+                 <tr>
+                   <td>Birthdate</td>
+                   <td><apex:inputField value="{!selectedcontact.birthdate}"/></td>
+                 </tr>
+                <tr>
+                  <td><apex:commandButton value="save" action="{!save}" reRender="conDetails,condata"/></td> 
+                </tr>
+             </table>           
+         </apex:outputpanel>
+     </apex:outputPanel>
+        
+     <apex:outputPanel id="wrapperData">
+      <apex:outputPanel rendered="{!WrapperClassDemoList.size > 0}">
+             <table border="1">
+               <tr>
+                <th> Action </th> 
+                <th> Contact First Name</th>  
+                <th> Contact Last Name</th>    
+                <th> User Email</th>  
+                <th> User City</th>  
+              </tr> 
+              <apex:repeat value="{!WrapperClassDemoList}" var="wrapperItem">
+                <tr>
+  <!--                  <td><a href="javascript:void(0);" onClick="fetchContact('{!con.id}');">Edit</a></td>  
+                <td><apex:inputCheckbox value="{!wrapperItem.isSelected}" /></td>                        
+                    <td>
+                        <apex:inputField value="{!wrapperItem.conRecord.FirstName}" rendered="{!(wrapperItem.isSelected ==true)}"/>
+                        <apex:outputField value="{!wrapperItem.conRecord.FirstName}" rendered="{!(wrapperItem.isSelected !=true)}"/>
+                    </td>    
+                    <td><apex:inputField value="{!wrapperItem.conRecord.LastName}" rendered="{!(wrapperItem.isSelected ==true)}"/></td>                       
+                    <td><apex:inputField value="{!wrapperItem.userRecord.email}"/></td>               
+                    <td><apex:inputField value="{!wrapperItem.userRecord.city}"/></td>                                         
+                  
+                </tr>
+              </apex:repeat>
+             </table>          
+      </apex:outputPanel>
+     </apex:outputPanel>
+     </apex:pageblock>
+    </apex:form>      
+</apex:page> -->
+
+<!--picklist having 10 accounts. Select account from picklist.
+Selected account will have selected account id.
+Onchange event will  fire.
+Js function is mapped to controller action.
+Controller action get called.
+Query data
+Refresh section display account data 
+Apx;action function will map java script to controller-->

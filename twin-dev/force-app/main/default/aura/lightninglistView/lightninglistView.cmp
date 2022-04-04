@@ -1,0 +1,11 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<lightning:listView aura:id="listViewAccounts"
+    objectApiName="Account"
+    listName="Inline_Editing_Name"
+    rows="50"
+    showSearchBar="true"
+    showActionBar="true"
+    enableInlineEdit="true"
+    showRowLevelActions="true"
+/>	
+</aura:component>

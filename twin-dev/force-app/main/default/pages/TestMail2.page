@@ -1,0 +1,12 @@
+<apex:page controller="TestMail2">
+    <apex:form >
+       <apex:pageblock >
+           <apex:pageBlockSection >
+               <apex:inputText value="{!Name}" label="Name" />
+               <apex:inputText value="{!Mail}" label="Mail" />               
+           </apex:pageBlockSection>
+        </apex:pageblock>
+        <apex:commandButton value="Send" action="{!sendemail_customer}"/>
+       
+    </apex:form>
+</apex:page>

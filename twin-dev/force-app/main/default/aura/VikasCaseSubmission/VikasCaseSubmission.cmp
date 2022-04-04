@@ -1,0 +1,13 @@
+<aura:component controller="VikasCaseSubmissionController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="objDetail" type="Case" default="{'sobjectType' : 'Case'}"/>   
+    <form>
+        <fieldset class="slds-box slds-theme--default slds-container">    
+            <lightning:input label="Case Reason"  name="CaseReasonName"  required ="true" value="{!v.objDetail.Reason}"/>  
+            <lightning:input type="TextArea" label="Case Description"  name="CaseDescription"  required ="true" value="{!v.objDetail.Description}"/>    
+            <lightning:input type="Phone" label="Phone Number"  name="ContactPhone"  required ="true" value="{!v.objDetail.ContactPhone}"/>    
+            <lightning:input type="Email" label="Email"  name="ContactEmail"  required ="true" value="{!v.objDetail.ContactEmail}"/>    
+            <lightning:input label="Name"  name="CaseName"  required ="true" value="{!v.objDetail.Name__c}"/><br/>    
+            <lightning:button variant="brand" label="Submit" onclick="{!c.SubmitCase}"/> <br/>
+        </fieldset>
+    </form>	
+</aura:component>

@@ -1,0 +1,13 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="Inp1" type="Integer"/>
+    <aura:attribute name="Inp2" type="Integer"/>
+    <aura:attribute name="Total" type="Integer"/>
+    Number
+    <lightning:input type="number" value="{!v.Inp1}" label="Enter the Label:"/>
+    <lightning:input type="number" value="{!v.Inp2}" label="Enter the Label:"/>
+    <ui:outputNumber value="{!v.Total}"/>
+    
+    <lightning:button label="Add" onClick="{!c.add}"/>
+    
+	
+</aura:component>

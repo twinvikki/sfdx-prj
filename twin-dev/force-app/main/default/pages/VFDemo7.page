@@ -1,0 +1,19 @@
+<apex:page controller="VFDemo7Controller" >
+    <apex:form >    <!--if we have custom contoller then we will have refernce variable.feildapi-->
+        <table border="1"> 
+            <tr><td>Account Name</td>
+                <td> <apex:inputField value="{!Acc.Name}" rendered="{!ShowEdit}"/>
+                     <apex:outputField value="{!Acc.Name}" rendered="{!!ShowEdit}"/></td> 
+            </tr>  
+            <tr><td>Rating</td>
+                <td><apex:inputField value="{!Acc.Rating}" rendered="{!ShowEdit}"/>
+                    <apex:outputField value="{!Acc.Rating}" rendered="{!!ShowEdit}"/>
+                </td>
+            </tr>
+            <tr><td><apex:commandButton value="Save" action="{!Save}" rendered="{!ShowEdit}"/> 
+                <apex:commandButton value="Edit" action="{!Edit}" rendered="{!!ShowEdit}"/></td>
+                <td><apex:commandButton value="Cancel" action="{!Cancel}"/></td>  
+            </tr>
+        </table>       
+    </apex:form>
+</apex:page>

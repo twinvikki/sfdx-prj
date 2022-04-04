@@ -1,0 +1,16 @@
+<apex:page standardController="opportunity" extensions="Vfp" >
+<apex:form >
+  <apex:inputField value="{!opportunity.stageName}">
+      <apex:actionSupport event="onchange" reRender="pb" />
+  </apex:inputField>
+  </apex:form>
+  <apex:pageBlock id="pb" >
+         
+           <apex:pageBlockTable value="{!opps}" var="v">
+            <apex:column value="{!v.name}"/>
+            <apex:column value="{!v.type}"/>
+            <apex:column value="{!v.CloseDate}"/>
+          </apex:pageBlockTable>
+         
+  </apex:pageBlock>  
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page sidebar="false" showHeader="false">
+
+    <apex:includeLightning />
+    <div id="lightning" />
+    
+    <script>
+    $Lightning.use("c:MainCompApp", function() {
+        $Lightning.createComponent("c:AllAppsMainPage",
+                                   { label : "" },
+                                   "lightning",
+                                   function(cmp) {
+                                       // do some stuff
+                                   });
+    });
+    </script>
+</apex:page>

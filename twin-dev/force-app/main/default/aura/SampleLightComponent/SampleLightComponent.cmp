@@ -1,0 +1,17 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="message" type="string" default="My first lightning comonent"/>
+    {!v.message}
+    
+    <lightning:input type="number" name="input1" label="Enter first number" />
+    <lightning:input type="number" name="input2" label="Enter Second number" />
+    <lightning:OutputField  label="Sum"  value="{!v.sum}" />
+    <lightning:Outputfield  label="Errors"  value="{!v.errors}"/>
+    
+    
+    <lightning:button label="Add" onclick="{!c.addnum}" />
+    <ui:button label="AddKey" press="{!c.addnums}" />
+    <lightning:button label="Cancel" onclick="{!c.clearNum}"/>
+    
+    
+   
+</aura:component>

@@ -1,0 +1,22 @@
+<apex:page >
+    <apex:includeLightning />
+    
+	<hr />
+	<hr />
+	<hr />
+	<div id="lwcLightning"></div>
+    
+    <script>
+    $Lightning.use("c:navigationApp", function() {
+       
+        $Lightning.createComponent(
+            "c:navigationPage",
+            { msg : "It works (LWC)!" },
+            "lwcLightning",
+            function(cmp) {
+                console.log("LWC component was created");
+            }
+        );
+    });
+    </script>
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page standardcontroller="Account" extensions="VFDemo3AcountExtension">
+    <apex:form >
+        {!Message}
+        <table border="1">
+            <tr> <td>Account Name</td>
+               <td><apex:inputField value="{!Account.Name}" /></td> 
+            </tr>  
+            <tr> <td>Rating</td>
+                 <td><apex:inputField value="{!Account.Rating}" required="true"/></td>
+            </tr> <!-- This attribute required="true" will make the feilds require -->
+            <tr><td><apex:commandButton value="Save" action="{!Save}" /></td>
+                <td><apex:commandButton value="Cancel" action="{!customCancel}" immediate="true"/></td>  
+            </tr> <!-- This attribute immediate = true will skip all the system validation and goes to contoller -->
+        </table>       
+    </apex:form>
+</apex:page>

@@ -1,0 +1,18 @@
+<apex:page showHeader="false">
+  <apex:includeScript value="{!$Resource.JQueryEx}"/>
+    <script>
+    function validate(){
+        if($("inputvalue").val()==" ") {
+            $("#err").remove();   /*for removing the enter value feild many times */
+            $("#inputvalue").after("<p id="err"> You must enter the value </p>");
+            $("#err").css("color","red");
+            $("#inputvalue").css("border","red 2px solid"); }
+        }
+     </script>
+    
+    <input type="text" id="inputvalue"/>
+    <p id="err"></p>
+    <button onClick="validate();">
+        validate
+    </button>
+</apex:page>

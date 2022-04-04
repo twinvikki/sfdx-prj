@@ -1,0 +1,14 @@
+<apex:page >
+    <apex:includeLightning />   
+    <div id="LcDisplayId"></div>     
+ <script>
+    $Lightning.use("c:ApplicationForVisualForce", function() {
+    $Lightning.createComponent("c:ComponentForVisualForce",
+    {label : "" },
+   "LcDisplayId",
+    function(component) {
+    alert('component created');
+    alert('component-->'+component)});
+ });
+ </script>
+</apex:page>

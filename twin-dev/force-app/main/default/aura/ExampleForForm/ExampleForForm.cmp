@@ -1,0 +1,11 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute  name="input1" type="string" default="Enter Name"/>
+    <aura:attribute name ="disp" type="boolean" default= "False"/>
+    <lightning:input value="{!v.input1}" label="Enter some text"/>
+    <lightning:button variant="brand" label="vikas" onclick="{!c.popup}"/> <br/>
+       <lightning:button variant="brand" label="Clear" onclick="{!c.vikas}"/>
+    <aura:if isTrue="{!v.disp}">
+        {!v.input1}
+    </aura:if>
+    
+</aura:component>

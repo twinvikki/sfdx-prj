@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <lightning:input type="text" name="ProductName" label="Enter a key to Search" placeholder="Enter Pharma Product or single alphabet"/>
+    
+</aura:component>

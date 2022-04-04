@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+
+    <lightning:recordEditForm aura:id="recordEditForm" 
+                           objectApiName="Account">
+        <lightning:messages />
+        <lightning:inputField fieldName="Name" />
+        <lightning:button class="slds-m-top_small" type="submit" label="Create new" />
+    </lightning:recordEditForm>
+
+</aura:component>

@@ -1,0 +1,57 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+        <aura:attribute name="abc" type="String" default="false"/>
+        <aura:attribute name="userresponse" type="String" default=""/>
+        <aura:attribute name="StudentName" type="String" default=""/>
+        <aura:attribute name="ParentsName" type="String" default=""/>
+        <aura:attribute name="StudentClass" type="String" default=""/>
+<!--Picklist--> <aura:attribute name="NoOfStudyHours" type="String[]" default=" ,Less than 1 hour,
+                                                                   In between 1 to 4 hrs, 
+                                                                   In between 4 to 7 hrs, More than 7 hrs"/>
+    <aura:attribute name="MobileNumber" type="Integer" default=""/>
+    <aura:attribute name="HaveYouTakenCourseBefore" type="Boolean" default="false"/>
+    <aura:attribute name="AreYouIntrestedInOnlineCourse" type="Boolean"/>
+    <aura:attribute name="Checkboxvalue" type="Boolean" default="false"/>
+    
+    <div class="slds-page-header">
+    <div class="slds-align_absolute-center">
+    <div class="slds-text-body_regular">
+        Registration for Student
+    </div>
+    </div>
+    </div><br/>
+    <!--We need some input feilds-->
+    <div class="slds-size--3-of-8">
+    <lightning:input label="Enter Your Name:" name="StudentsName" value="{!v.StudentName}"/> <br/>
+    <lightning:input label="Enter Parent Name:" name="ParentsName" value="{!v.ParentsName}"/> <br/>
+    <lightning:input label="Class Name:" name="StudentClass" value="{!v.StudentClass}"/> <br/>
+    
+    <!--lightning:select tag is used for picklist values and option tag within-->  
+    <lightning:select label="No of Study Hours in a day?" name="NoOfStudyHours" value="{!v.userresponse}">
+        
+        <!-- aura iteration is used for traversing and we need to define attribute name in items and 
+             bind the user selected to an attribute in lightning select value-->
+        <aura:iteration items="{!v.NoOfStudyHours}" var="hrs">
+            <option value="{!hrs}" text="{!hrs}"/>
+        </aura:iteration>      
+
+        <!--
+       I dont want in these way. I wamnt to iterate then use above logic <option value="One">1</option>
+        <option value="Two">2</option>
+        <option value="Three">3</option>
+        <option value="Four">4</option>  -->
+    </lightning:select> <br/>
+    <lightning:input label="Enter Phone Number" type="telephone" name="MobileNumber" value="{!v.MobileNumber}"/> <br/>
+        <!-- We can have multiple components with the one aura id-->
+    <lightning:input aura:id="checkbox"  label="Are you available on weekend to attend the class" 
+                     type="checkbox" onchange="{!c.onClickCheckbox}" name="CourseTaken" 
+                     value="{!v.HaveYouTakenCourseBefore}"/>
+        <br/>
+        <aura:if isTrue="{!v.Checkboxvalue}">
+         <i>   That's Great !! Happy Learning !!</i>
+        </aura:if> <br/>
+ 
+        <lightning:button label="Submit" onclick="{!c.doSubmit}"></lightning:button> </div>
+    
+	
+</aura:component>

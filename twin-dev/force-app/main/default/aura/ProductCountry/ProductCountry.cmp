@@ -1,0 +1,24 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                controller="ProductFetch" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>    
+    <aura:attribute name="ListOfAllProduct" type="list" default="[]" description="Products Name"/>
+    <aura:attribute name="EnableFetchcases" type="Boolean" default="false"/>
+    <aura:attribute name="P2Country" type="list" default="[]" description="Products Available in Countries"/>
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <aura:attribute name="selectedAccountRecord" type="sObject" default="{}"/>  
+    <lightning:select name="ProductName" aura:id="SourceProduct" label="Select Option from Drop Down" onchange="{!c.SelectCases}">
+        <option>--None--</option>
+        <aura:iteration items="{!v.ListOfAllProduct}" var="val">           
+            <option value="{!val.label}">{!val.value}</option>
+        </aura:iteration>
+    </lightning:select> <br/>
+    <c:LookupComponent objectAPIName="Product2" IconName="standard:Product2" 
+                             label="ProductDetails *" 
+                             selectedRecord="{!v.selectedLookUpRecord}"/> <br/> 
+    <c:LookupComponent objectAPIName="Account" IconName="standard:Account" 
+                             label="AccountDetails *" 
+                             selectedRecord="{!v.selectedAccountRecord}"/> <br/>   
+    <aura:if isTrue="{!v.EnableFetchcases}">
+        <lightning:button variant="brand" label="Fetch Case Details" onclick="{!c.CallCasesComponent}"/>
+    </aura:if>
+</aura:component>

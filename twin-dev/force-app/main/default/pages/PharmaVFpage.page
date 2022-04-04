@@ -1,0 +1,9 @@
+<apex:page standardcontroller="Vehicle_Product__c">
+    <apex:form >
+      <apex:pageBlock >
+        <apex:pageBlockTable value="{!Vehicle_Product__c}" var="item">
+            <apex:column value="{!item.name}"/>
+        </apex:pageBlockTable>
+      </apex:pageBlock>
+    </apex:form>
+</apex:page>

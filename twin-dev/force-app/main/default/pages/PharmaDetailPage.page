@@ -1,0 +1,117 @@
+<apex:page controller="PharmaProductExtension">
+    <style type="text/css">
+        p{font-weight:bold;}
+    </style>
+    <apex:form > 
+       <apex:pageBlock >        
+             <p> Pharma Name : &nbsp;<apex:inputText value="{!valueofInputtext}"/>  </p>  
+             <apex:commandButton action="{!doSubmit}" value="Show Product"/>  
+       </apex:pageBlock>   
+       <apex:pageBlock title="Complete details related to Pharma" rendered="{!showblock}" >
+           <apex:pageBlockTable value="{!Wrapperlist}" columnsWidth="100px, 50px" var="wraprecord" rendered="{!Wrapperlist.size>0}"> 
+                    <apex:column value="{!wraprecord.samRecord.name}"/>
+                    <apex:column value="{!wraprecord.samRecord.Quantity__c}"/>
+                    <apex:column value="{!wraprecord.samRecord.Visit__c}"/>
+                    <apex:column value="{!wraprecord.hospitalteam.name}"/>
+                    <apex:column value="{!wraprecord.hospitalteam.Geo_Region__c}"/>
+                    <apex:column value="{!wraprecord.salesteam.name}"/>
+                    <apex:column value="{!wraprecord.salesteam.Email__c}"/>
+                    <apex:column value="{!wraprecord.salesteam.Phone__c}"/>
+                    <apex:column value="{!wraprecord.visitdet.Visit_Date__c}"/>
+                    <apex:column value="{!wraprecord.visitdet.Feedback__c}"/>
+          </apex:pageBlockTable>   
+          <apex:pageBlockTable value="{!WrapperSecondlist}" columnsWidth="100px, 50px"
+                                        var="wraprecord" rendered="{!WrapperSecondlist.size>0}">
+                    <apex:column value="{!wraprecord.PharmaInvoice.name}"/>
+                    <apex:column value="{!wraprecord.Inv.name}"/>
+                    <apex:column value="{!wraprecord.Inv.Amount__c}"/>
+                    <apex:column value="{!wraprecord.Inv.Amount_After_Discount__c}"/>
+                    <apex:column value="{!wraprecord.Inv.Hospital__c}"/>
+                    <apex:column value="{!wraprecord.Inv.Invoice_Date__c}"/>
+                    <apex:column value="{!wraprecord.Inv.Invoice_Reg_Number__c}"/>
+           </apex:pageBlockTable> 
+           <apex:commandButton value="Single Email" action="{!singlemail}" />
+           <apex:commandbutton value="Group Email" action="{!GroupMail}" />
+           <apex:commandbutton value="Print" action="{!GeneratePdf}"/>
+       </apex:pageBlock>
+       <apex:pageblock rendered="{!MailButton}">
+          <apex:pageBlock rendered="{!singlemail}">        
+          Email Address :  <apex:inputText value="{!toAddress}"  /> <br/>
+          <apex:outputLabel value="Body:" for="BodyArea"/>
+          <apex:inputtextarea label="RichText"  richtext="true" value="{!BodyArea}" id="BodyArea" cols="100" rows="15"/>
+          Email Status :<b> {!message}  </b>
+          <apex:commandbutton value="Email" action="{!PressButtonForMail}" />
+          </apex:pageBlock> 
+          <apex:pageblock rendered="{!Groupemail}"> 
+              To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:inputText value="{!EmailToList}"  /> <br/> <br/>
+              Subject:&nbsp; <apex:inputText value="{!SubjectArea}" style="border: 1px solid black; text-align:center; padding: 15px; width:50px;" /> <br/><br/>
+          <apex:inputtextarea label="RichText"  richtext="true" value="{!BodyArea}" id="BodyArea" cols="100" rows="15"/> <br/>
+          Email Status :<b> {!message}  </b>
+          <apex:commandbutton value="Email" action="{!PressButtonForGroupMail}" />          
+          </apex:pageblock>
+        </apex:pageblock>                                
+    </apex:form>
+</apex:page>
+    <!--
+          <table border="1">
+                <tr>
+                   <th>Name</th>
+                   <th>Fr Name</th>
+                   <th>Fr Mail</th>
+                   <th>Visit</th>
+                   <th>Hospital Name</th>
+                </tr>
+                    <apex:repeat value="{!Wrapperlist}" var="wrapperItem">
+                        <tr>
+                            <td>
+                                <apex:outputField value="{!wrapperItem.samRecord.name}"/>
+                            </td>
+                            <td>
+                              	<apex:outputField value="{!wrapperItem.salesteam.name}"/>
+                            </td>
+                            <td>
+                            	<apex:outputField value="{!wrapperItem.salesteam.email__c}"/>
+                            </td>
+                            <td>
+                            	<apex:outputField value="{!wrapperItem.samRecord.visit__c}"/>
+                            </td>
+                            <td>
+                            	<apex:outputField value="{!wrapperItem.hospitalteam.name}"/>
+                            </td>
+                        </tr>
+            		</apex:repeat>
+                </table>                        
+                    <apex:commandButton value="edit"/>
+                    <apex:commandButton value="save"/> 
+      </apex:form>
+       <apex:pageBlock title="Complete details related to Pharma">
+         <apex:repeat value="{!Wrapperlist}" var="a">  
+           {!Wrapperlist}
+          <apex:pageBlockSection title="Sample Details">
+           <apex:pageBlockTable value="{!Wrapperlist}" var="a"> 
+                    <apex:column value="{!a.samRecord.name}"/>
+                    <apex:column value="{!a.samRecord.Quantity__c}"/>
+                    <apex:column value="{!a.salesteam.name}"/>
+                    <apex:column value="{!a.salesteam.email__c}"/>
+                    <apex:column value="{!a.salesteam.phone__c}"/>
+                    <apex:column value="{!a.samRecord.visit__c}"/>
+                    <apex:column value="{!a..hospitalteam.name}"/>
+                    <apex:column value="{!a.hospitalteam.Geo_Region__c}"/>
+                    <apex:column value="{!a.hospitalteam.visit__c}"/>
+                    <apex:column value="{!a..hospitalteam.name}"/>
+                    <apex:column value="{!visitdet.Visit_Date__c}"/>
+                    <apex:column value="{!visitdet.Feedback__c}"/>
+          </apex:pageBlockTable>
+         </apex:pageBlockSection>
+          <apex:pageBlockSection title="PharmaInvoice Details">
+           <apex:pageBlockTable value="{!a.PharmaInvoices__r}" var="c">
+                    <apex:column value="{!c.name}"/>
+                    <apex:column value="{!c.Invoice__r.name}"/>
+                    <apex:column value="{!c.Pharma_Product__r.name}"/>
+           </apex:pageBlockTable>                      
+         </apex:pageBlockSection>
+              </apex:repeat>  
+       </apex:pageBlock>
+        <apex:commandbutton value="Email"/>
+        <apex:commandbutton value="Print"/>
+    </apex:form>-->

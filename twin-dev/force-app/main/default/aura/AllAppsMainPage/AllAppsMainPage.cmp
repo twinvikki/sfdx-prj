@@ -1,0 +1,27 @@
+<aura:component>
+    <aura:registerEvent name="RedirectToRegisterPage" type="c:RedirectToRegisterPage"/>    
+    <lightning:button variant="brand" label="Pharma" title="Pharma Products" onclick="{!c.RedirectToPage}"/>
+    <lightning:button label="Other Products" variant="brand"/>
+  
+</aura:component>
+
+<!--
+                <lightning:helptext
+        content="Click the icon to log in to Salesforce"
+        iconName="utility:salesforce1"
+    />
+                <lightning:helptext
+        content="The tooltip displays on the lower left of the icon or above the icon if space is available. It automatically adjusts its position according to the viewport."
+    />
+    <div class="row">
+        <lightning:icon iconName="action:call" alternativeText="Click to Call" size="small"/> 8099913634
+    </div>   
+<lightning:button variant="brand" label="Download" iconName="utility:download" iconPosition="left" onclick="{! c.handleClick }" />
+<lightning:buttonIcon iconName="utility:fallback" class="myUniqueClass" name="Pharma Products" variant="brand"/>
+ <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="listofAllObj" type="list" default="[]" description="all objects API"/>
+    <lightning:select name="AllObjFeilds" label="Select Option from Drop Down">
+        <aura:iteration items="{!v.listofAllObj}" var="val">
+            <option value="{!val.label}">{!val.value}</option>
+        </aura:iteration>
+    </lightning:select>  -->

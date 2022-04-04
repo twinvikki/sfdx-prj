@@ -1,0 +1,11 @@
+<aura:component >
+   <aura:attribute name="objDetail" type="LoginObj__c" default="{'sobjectType' : 'LoginObj__c'}"/>  
+    <aura:handler event="c:RedirectToRegisterPage" action="{!c.component2Event}"/>
+   <!--aura:attribute name="Email" type="Mail" default="examaple@example.com"/-->
+   <lightning:input label="Email" name="Email" type="email" required="true" default="examaple@example.com" value="{!v.objDetail.Name}"/>
+   <lightning:input label="Password" name="Password" type="string" required="true" value="{!v.objDetail.Password__c}"/>
+   <lightning:input label="FirstName" name="FirstName" type="string" required="true" value="{!v.objDetail.FirstName__c}"/>
+   <lightning:input label="LastName" name="LastName" type="string" value="{!v.objDetail.LastName__c}"/>
+   <lightning:button variant="brand" label="Create Account"/>
+    
+</aura:component>

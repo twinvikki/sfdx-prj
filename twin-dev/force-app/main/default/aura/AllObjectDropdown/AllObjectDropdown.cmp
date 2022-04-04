@@ -1,0 +1,20 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" 
+                access="global" 
+                controller="FetchAllObjectsInOrg">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>    
+    <aura:attribute name="listofAllObj" type="list" default="[]" description="all objects API"/>
+    <aura:attribute name="listofProfile" type="list" default="[]" description="all objects API"/>
+    <lightning:select name="AllProfile" label="Select Option from Drop Down">
+        <option>--None--</option>
+        <aura:iteration items="{!v.listofProfile}" var="val">           
+            <option value="{!val.label}">{!val.value}</option>
+        </aura:iteration>
+    </lightning:select>
+    <lightning:combobox aura:id="selectitem" name="Combobox" label="Many Options" placeholder="--None--"
+                        options="{!v.listofProfile}"/>
+    <!--lightning:select name="AllObjFeilds" label="Select Option from Drop Down">
+        <aura:iteration items="{!v.listofAllObj}" var="val">
+            <option value="{!val.label}">{!val.value}</option>
+        </aura:iteration>
+    </lightning:select-->	    
+</aura:component>

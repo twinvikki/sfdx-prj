@@ -1,0 +1,16 @@
+<apex:page standardController="Contact">
+    <apex:form >
+    <apex:Outputlabel value="Name:"/>
+    <apex:outputField value="{!Contact.name}"/>
+        <br/>
+        Email:<apex:outputField value="{!Contact.email}"/>
+        <br/>
+        Dept:<apex:outputField value="{!Contact.department}"/>
+        <br/>
+        DOB:<apex:outputField value="{!Contact.Birthdate}"/>
+        <br/>
+        FAX:<apex:outputField value="{!Contact.fax}"/>
+        account:
+        <apex:inputField value="{!contact.accountid}"/>
+    </apex:form>
+</apex:page>

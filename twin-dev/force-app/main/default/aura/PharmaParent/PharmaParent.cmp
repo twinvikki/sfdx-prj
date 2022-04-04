@@ -1,0 +1,9 @@
+<aura:component controller="PharmaIDFetch" >
+  <!--   <aura:handler name="init" value="this" action="{!c.doInit}"/>  -->
+    <aura:registerEvent name="NavigateIdTOChild" type="c:NavigateIdTOChild"/>
+    <aura:attribute name="parentvalue" type="string"/>
+    <aura:attribute name="objDetail" type="Vehicle_Product__c" default="{'sObjectType' : 'Pharma_Product__c'}"/>
+    <lightning:input label="First Name*" name="EnterFirstName" value="{!v.objDetail.Name}"/>
+    <lightning:input label="Inventory*" name="Inventory" value="{!v.objDetail.Pharma_Inventory__c}"/>
+    <lightning:button variant="brand" label="Submit(without attachment)" onclick="{!c.save}"/>
+</aura:component>

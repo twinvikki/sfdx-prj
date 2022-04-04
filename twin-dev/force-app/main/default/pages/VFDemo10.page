@@ -1,0 +1,23 @@
+<apex:page controller="VFDemoController10" >
+    <apex:pageMessages /> 
+    <apex:form >
+     <table border="1">
+            <tr>
+             <td>Account Name</td>
+                <td><apex:inputField value="{!acc.Name}"/></td>
+            </tr>
+            <tr>
+             <td>Rating</td>
+                <td><apex:inputField value="{!acc.Rating}"/></td>
+            </tr>  <!-- Instead of usimg required = true i ant to make that feild is required-->
+            <tr>
+                <td>SLA Expiration Date</td>
+                <td><apex:inputField value="{!acc.SLAExpirationDate__c}"/></td>
+            </tr>
+            <tr>
+             <td><apex:commandButton value="Save" action="{!save}"/></td>
+                <td><apex:commandButton value="Cancel" action="{!cancel}"/></td>
+            </tr>
+        </table>
+    </apex:form>
+</apex:page>

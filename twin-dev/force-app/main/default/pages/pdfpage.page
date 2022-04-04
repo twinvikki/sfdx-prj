@@ -1,0 +1,17 @@
+<apex:page renderAs="pdf" >
+    <apex:image value="{!$Resource.edimage}"/>
+    <table border = '1'>
+        <tr>
+        <th> Name </th>
+        <th> Address</th> 
+        <th> Email </th> 
+        <th> mobile </th>    
+        </tr>
+        <tr>
+        <td> VIkranth </td>
+            <td> Hyderabad </td>
+            <td> ********@gmail.com </td>
+            <td> 8099913634 </td>
+        </tr>
+    </table>
+</apex:page>

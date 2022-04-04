@@ -1,0 +1,11 @@
+buttonStyle {
+    padding-top: 25px;
+    align-content: center;
+  }
+
+ .inputPadding{
+   padding-right: 25px;
+   padding-left:25px;
+   padding-top:10px;
+   padding-bottom:10px;
+ }

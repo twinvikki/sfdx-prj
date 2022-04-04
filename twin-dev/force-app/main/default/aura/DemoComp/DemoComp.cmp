@@ -1,0 +1,20 @@
+<aura:component controller="ProductFetch">
+    <aura:attribute name="SearchAccount" type="string" default=""/>
+    <aura:attribute name="listofaccname" type="list" default=""/>
+    <div class="slds-p-top_xxx-small">
+        <div class="slds-align_absolute-center" style="height:5rem">
+            <lightning:input name="Search" label="Search" value="{!v.SearchAccount}" />             
+        </div>
+        <div class="slds-align_absolute-center" style="height:3rem">
+           <lightning:button variant="brand" title="Search" label="Search" onclick="{!c.SearchAccount}"/>           
+        </div>
+    </div>
+  <aura:iteration items="{!v.listofaccname}" var="item">
+
+         {!item.value}
+
+         <br/>
+
+    </aura:iteration>
+   
+</aura:component>

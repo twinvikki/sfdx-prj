@@ -1,0 +1,39 @@
+<aura:component implements="force:appHostable,lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="objDetail" type="Object"/>   
+    <aura:attribute name="objFeildDetail" type="Object"/> 
+    <aura:attribute name="errordetail" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <force:recordData aura:id="2WheelerRecordCreator"
+                      layoutType="FULL"
+                      targetRecord="{!v.objDetail}"
+                      targetFields="{!v.objFeildDetail}"
+                      targetError="{!v.errordetail}"/>
+    <lightning:layout class="slds-page-header slds-page-header--object-home">
+        <lightning:layoutItem>
+            <lightning:icon iconName="custom:custom44" alternativeText="Bike Edit Page"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="horizontal-small">
+            <div class="page-section page-header">
+                <h1 class="slds-text-heading--label">Edit Page</h1>
+            </div>
+        </lightning:layoutItem>        
+    </lightning:layout>  
+    <lightning:input label="Vehicle Name" required="true" name="Vehicle Name" 
+                     value="{!v.objFeildDetail.Name}"/> <br/>
+    <lightning:textarea label="Descirption" name="Description" type="text" value="{!v.objFeildDetail.Description__c}"/>
+    <br/>
+    <div class="slds-page-header" style="cursor: pointer;" onclick="{!c.Engine}">
+        <section class="slds-clearfix">
+            <div class="slds-float_left">
+                <p>Engine</p>
+                <lightning:icon class="slds-show" aura:id="articleOne" iconName="utility:add" 
+                                size="x-small" alternativeText="Indicates add"/>
+                <lightning:icon class="slds-hide" aura:id="articleOne" iconName="utility:dash" 
+                                size="x-small" alternativeText="Indicates dash"/>                        
+            </div>                    
+        </section>
+    </div>
+    <div class="slds-hide slds-p-around--medium" aura:id="articleOne" >                
+    </div>
+ <lightning:button label="Save Record" variant="brand" onclick="{!c.handleSaveRecord}"/>
+</aura:component>

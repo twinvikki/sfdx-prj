@@ -1,0 +1,17 @@
+<apex:page standardController="Account" extensions="VFDemo4AccountExtension" >
+    <h1>
+        VFDemo4 Account Record Type Broker
+    </h1>
+    <apex:form >
+       <table>
+          <tr>           
+           <td> Record Type</td>
+           <td><apex:inputField value="{!Account.name}" /></td>
+          </tr>
+          <tr>
+            <td><apex:commandButton value="Save" action="{!save}" /></td>
+            <td><apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/></td>
+          </tr>
+        </table>
+    </apex:form>
+</apex:page>

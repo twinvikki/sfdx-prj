@@ -1,0 +1,24 @@
+<apex:page controller="ConController">
+<APEX:FORM >  
+<apex:pageblock title="List of contact"> 
+<apex:pageBlockSection >
+  
+<apex:pageblocktable value="{!condetails}" var="e" >
+<apex:column >
+    Name:
+    <apex:inputField value="{!e.LastName}"/>
+    Email:
+    <apex:inputField value="{!e.Email}" required="true"/>
+</apex:column>
+</apex:pageblocktable>
+</apex:pageBlockSection>
+</apex:pageblock>
+
+
+         <table border="1"> 
+            <tr><td>Contact Name</td>
+                <td> <apex:outputField value="{!condetails.LastName}" /> </td>
+            </tr>  
+    </table>
+</APEX:FORM>
+</apex:page>

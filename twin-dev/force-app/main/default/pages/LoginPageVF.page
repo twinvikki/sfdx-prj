@@ -1,0 +1,15 @@
+<apex:page showheader="false" sidebar="false" title="Login Page"  >
+    <apex:includeLightning />
+    <div id="lightning" />
+    
+    <script>
+    $Lightning.use("c:LoginPageApp", function() {
+        $Lightning.createComponent("c:LoginPageComp",
+                                   { label : "" },
+                                   "lightning",
+                                   function(cmp) {
+                                       // do some stuff
+                                   });
+    });
+    </script>
+</apex:page>

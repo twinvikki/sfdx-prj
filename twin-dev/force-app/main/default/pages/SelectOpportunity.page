@@ -1,0 +1,10 @@
+<apex:page standardController="Opportunity" >
+    <apex:form >
+    <apex:Outputlabel value="Name:"/>
+    <apex:outputField value="{!Opportunity.name}"/>
+        <br/>
+        Stage:<apex:outputField value="{!Opportunity.stagename}"/>
+        <br/>
+
+    </apex:form>
+</apex:page>

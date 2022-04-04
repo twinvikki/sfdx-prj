@@ -1,0 +1,57 @@
+<apex:page standardController="Account" extensions="Accountseg" renderAs="PDF" standardStylesheets="false">  
+ <apex:form >
+  <apex:pageblock >
+    <apex:pageBlockSection columns="3">
+       <apex:image value="{!$Resource.edimage}" width="100" height="100"/> 
+       <h1> &nbsp; The List of Details In PDF  &nbsp; </h1>
+       <apex:outputText value="{0, date, MMMM d',' yyyy}">
+            <apex:param value="{!NOW()}"/>    
+       </apex:outputText>
+    </apex:pageBlockSection>
+     
+    <apex:pageBlockSection title="Account" > 
+     <table border="1" cellpadding="2"><tr> 
+     <th><apex:pageBlockTable value="{!Account}" var="act">
+     <th><apex:column value="{!act.id}"/></th>
+     <th><apex:column value="{!act.name}"/></th>
+     <th><apex:column value="{!act.fax}"/></th>
+     <th><apex:column value="{!act.phone}"/></th>  
+     <th><apex:column value="{!act.industry}"/></th> 
+     </apex:pageBlockTable></th></tr>
+          
+     <tr><th><apex:datatable value="{!Tech}" var="ac">
+     <th><apex:column value="{!ac.id}"/></th>
+     <th><apex:column value="{!ac.name}"/></th>
+     <th><apex:column value="{!ac.fax}"/></th>
+     <th><apex:column value="{!ac.phone}"/></th>
+     <th><apex:column value="{!ac.industry}"/></th>
+     </apex:datatable></th></tr>
+     </table>
+    </apex:pageBlockSection>
+    <apex:pageBlockSection title="Contacts">
+       <table border = '1'>
+         <tr>
+           <th><p>
+               account.name
+               </p></th>
+             <th><p>
+               account.11name
+               </p></th>
+           </tr>
+             <tr><th><h1>
+               account.id
+               </h1>
+          </th>
+         </tr>     
+       </table>          
+     </apex:pageBlockSection>
+     <apex:pageBlockSection title="Customer">
+            <table border = '1'>
+            <tr>
+                <th>account.name</th>
+            </tr>     
+            </table>
+      </apex:pageBlockSection>
+    </apex:pageblock>
+  </apex:form>
+</apex:page>

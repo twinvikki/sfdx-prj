@@ -1,0 +1,15 @@
+<apex:page controller="TestAPIMetadataSearch">
+    <apex:form >  
+    <p> ObjectName: &nbsp; <apex:inputtext value="{!inputstring}"/></p>
+    <apex:commandButton value="Fetch Dependency" action="{!SelectObjectMethod}"/>
+    <apex:pageBlock > 
+        {!WrapDetailsList}
+     <apex:pageBlockTable value="{!WrapDetailsList}" columnsWidth="100px, 50px" var="wraprecord"> 
+           <apex:column value="{!wraprecord.TriggerList}"/>
+     </apex:pageBlockTable> 
+    <apex:pageBlockTable value="{!WrapDetailsList}" columnsWidth="100px, 50px" var="wraprecord"> 
+           <apex:column value="{!wraprecord.ApprovalDef}"/>
+     </apex:pageBlockTable> 
+    </apex:pageBlock> 
+    </apex:form>
+</apex:page>

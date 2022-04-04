@@ -1,0 +1,18 @@
+<aura:component>
+    <aura:attribute type="string" name="inputforParam" default=""/>
+    <aura:handler event="c:RedirectToRegisterPage" action="{!c.handleApplicationEvent}"/>
+    <div class="slds-p-horizontal_xx-large">
+      <div class="forPadding">
+        <lightning:input type="string" label="Enter email or Mobile number" default=""/>
+        <p>Password</p>
+          <input id="text-input-id-1" class="slds-input" type="password" value="" /><br/><br/>
+          <lightning:button variant="brand" label="Login" /> &nbsp;
+          <lightning:button variant="destructive" label="Signup" onclick="{!c.signupuser}"/>
+          <lightning:formattedUrl value="https://vikranthdevorg-developer-edition.ap5.force.com/Login/UserRegistrationPage" label="New Customer" target="_blank" />
+      </div>
+    </div>
+    <!--ui:inputSecret aura:id="secret" label="Pin" class="field" value="123456"/-->
+     
+    
+    
+</aura:component>

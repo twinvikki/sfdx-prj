@@ -1,0 +1,35 @@
+<apex:page controller="EmployeeCT">
+    <apex:form >
+        <apex:pageblock >
+            <apex:pageblocksection >
+              <apex:outputlabel value="Name"/>
+              <apex:inputtext value="{!name}" />
+            </apex:pageblocksection>
+            <apex:pageblocksection >
+              <apex:outputlabel value="salary"/>
+              <apex:inputText value="{!salary}" />
+            </apex:pageblocksection>
+            <apex:pageblocksection >
+              <apex:outputlabel value="dept"/>
+              <apex:inputtext value="{!dept}" />
+            </apex:pageblocksection>
+            <apex:pageblocksection >
+                <apex:commandButton value="Save" action="{!save}"/>
+            </apex:pageblocksection>
+        </apex:pageblock>
+        <apex:pageblock >
+            <apex:pageblocksection >
+              <apex:inputfield value="{!empobj.name}" />
+            </apex:pageblocksection>
+            <apex:pageblocksection >
+                <apex:inputfield value="{!empobj.EmployeeSalary__c}"/> 
+            </apex:pageblocksection>
+            <apex:pageblocksection >
+              <apex:inputtext value="{!empobj.EmployeeDepartment__c}" />
+            </apex:pageblocksection>
+            <apex:pageblocksection >
+                <apex:commandButton value="Save" action="{!saverecord}"/>
+            </apex:pageblocksection>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

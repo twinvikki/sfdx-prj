@@ -1,0 +1,48 @@
+<apex:page standardController="account"  extensions="VPGPDF" renderAs="pdf" >
+  <apex:form >
+   <apex:pageBlock >
+     <apex:pageBlockSection columns="3">
+       <apex:image value="{!$Resource.edimage}" width="100" height="100"/>
+         <h1> &nbsp;&nbsp;&nbsp; PDF PAGE &nbsp;&nbsp;&nbsp;</h1>
+         <apex:outputText value="{0, date,MMMM d',' yyyy}"> 
+         <apex:param value="{!now()}"/>
+       </apex:outputText>
+     </apex:pageBlockSection>
+     <apex:pageBlockSection title="Account" > 
+     <table border="1" cellpadding="2"><tr> 
+     <th><apex:pageBlockTable value="{!Account}" var="act">
+     <th><apex:column value="{!act.id}"/></th>
+     <th><apex:column value="{!act.name}"/></th>
+     <th><apex:column value="{!act.fax}"/></th>
+     <th><apex:column value="{!act.phone}"/></th>  
+     <th><apex:column value="{!act.industry}"/></th> 
+     </apex:pageBlockTable></th></tr>
+          
+     <tr><td><apex:datatable value="{!detail}" var="ac">
+     <td><apex:column value="{!ac.id}"/></td>
+     <td><apex:column value="{!ac.name}"/></td>
+     <td><apex:column value="{!ac.fax}"/></td>
+     <td><apex:column value="{!ac.phone}"/></td>
+     <td><apex:column value="{!ac.industry}"/></td>
+     </apex:datatable></td></tr>
+     </table>
+    </apex:pageBlockSection>
+       
+    <apex:pageBlockSection title="contact">
+    <table border="1" cellpadding="2"><tr>
+    <th><apex:pageBlockTable value="{!Account.contacts}" var="c">
+    <th><apex:column value="{!c.name}"/></th>
+    <th><apex:column value="{!c.leadsource}"/></th>
+    <th><apex:column value="{!c.phone}"/></th> 
+    </apex:pageBlockTable></th></tr>
+     <tr><td><apex:datatable value="{!All}" var="de">
+     <td><apex:column value="{!de.name}"/></td>
+     <td><apex:column value="{!de.leadsource}"/></td>
+     <td><apex:column value="{!de.phone}"/></td>
+     </apex:datatable></td></tr>           
+    </table>
+    </apex:pageBlockSection>
+
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

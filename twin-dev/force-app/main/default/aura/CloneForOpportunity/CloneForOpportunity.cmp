@@ -1,0 +1,13 @@
+<aura:component controller="OpportunityCloneApex" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <lightning:recordForm aura:id="OppForm"
+                          objectApiName="Opportunity"
+                          columns="2"
+                          class="OppForm"
+                          layoutType="Full"
+                          onsubmit="{!c.cloneOpportunity}"
+                          mode="edit"
+                          oncancel="{!c.handleCancel}" 
+                          recordId="{!v.recordId}"/>       
+
+</aura:component>
